@@ -894,8 +894,8 @@ information:CreateLabel("Place version: "..game.PlaceVersion)
 information:CreateLabel("Script by ugurtr53")
 information:CreateLabel("uuR tarafından yapıldı.")
 local gainedhoneylabel = information:CreateLabel("Kazanılan Bal: 0")
-information:CreateButton("Sohbet Muhabbet Sunucusu", function() setclipboard("https://discord.gg/RbqRZFUP") end)
-information:CreateButton("GPO Sunucusu", function() setclipboard("https://discord.gg/hEfu8Bv7") end)
+information:CreateButton("Sohbet Muhabbet Sunucusu", function() setclipboard("https://discord.gg/p6uu89DRQs") end)
+information:CreateButton("GPO Sunucusu", function() setclipboard("https://discord.gg/xk63YwCxvJ") end)
 information:CreateToggle("Status Panel",true,function(bool) 
 kocmoc.toggles.enablestatuspanel=bool 
 if bool == false then 
