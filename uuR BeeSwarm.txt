@@ -265,12 +265,12 @@ getgenv().kocmoc = {
         farmflame = false,
         farmclouds = false,
         killmondo = false,
-        killvicious = true,
+        killvicious = false,
         loopspeed = false,
         loopjump = false,
         autoquest = false,
         autoboosters = false,
-        autodispense = true,
+        autodispense = false,
         clock = false,
         freeantpass = false,
         honeystorm = false,
@@ -329,15 +329,15 @@ getgenv().kocmoc = {
         resettimer = 3,
     },
     dispensesettings = {
-        blub = true,
-        straw = true,
-        treat = true,
-        coconut = true,
-        glue = true,
-        rj = true,
-        white = true,
-        red = true,
-        blue = true
+        blub = false,
+        straw = false,
+        treat = false,
+        coconut = false,
+        glue = false,
+        rj = false,
+        white = false,
+        red = false,
+        blue = false
     }
 }
 
@@ -845,17 +845,17 @@ end
 local Config = { WindowName = "uuR v"..temptable.version.." uuR#1509", Color = Color3.fromRGB(164, 84, 255), Keybind = Enum.KeyCode.Semicolon}
 local Window = library:CreateWindow(Config, game:GetService("CoreGui"))
 
-local hometab = Window:CreateTab("Home")
-local farmtab = Window:CreateTab("Farming")
-local combtab = Window:CreateTab("Combat")
-local itemstab = Window:CreateTab("Items")
-local misctab = Window:CreateTab("Misc")
-local setttab = Window:CreateTab("Settings")
+local hometab = Window:CreateTab("Ana Sayfa")
+local farmtab = Window:CreateTab("Gelişme")
+local combtab = Window:CreateTab("NPC Öldürme")
+local itemstab = Window:CreateTab("Itemler")
+local misctab = Window:CreateTab("Extra")
+local setttab = Window:CreateTab("Ayarlar")
 
-local loadingInfo = hometab:CreateSection("Startup")
-local loadingFunctions = loadingInfo:CreateLabel("Loading Functions..")
+local loadingInfo = hometab:CreateSection("Kuruluyor")
+local loadingFunctions = loadingInfo:CreateLabel("Fonksiyonlar Yükleniyor..")
 wait(1)
-loadingFunctions:UpdateText("Loaded Functions")
+loadingFunctions:UpdateText("Fonksiyonlar Yüklendi!")
 local loadingBackend = loadingInfo:CreateLabel("Loading Backend..")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Boxking776/kocmoc/main/functions/premium/loadperks.lua"))()
 if getgenv().LoadPremium then
@@ -872,7 +872,7 @@ end
 writefile("PrevServers2.txt",s)
 --end temp patch
 else
-    warn("Error loading Kocmoc Premium")
+    warn("Kocmoc Premium Yüklenirken Hata oluştu!")
 end
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/Boxking776/kocmoc/main/functions/premium/loadperks.lua"))()("WindowLoad",Window)
 
@@ -881,9 +881,9 @@ end
 --loadPremium("WindowLoad",Window)
 
 loadingBackend:UpdateText("Loaded Backend")
-local loadingUI = loadingInfo:CreateLabel("Loading UI..")
+local loadingUI = loadingInfo:CreateLabel("GUI Yükleniyor..")
 
-local information = hometab:CreateSection("Information")
+local information = hometab:CreateSection("Bilgilendirme")
 information:CreateLabel("Hoşgeldin, "..api.nickname.."!")
 information:CreateLabel("Script sürümü: "..temptable.version)
 information:CreateLabel("Oyun version: "..game.PlaceVersion)
@@ -903,12 +903,12 @@ for i,v in pairs(game:GetService("CoreGui"):GetDescendants()) do
 if string.find(v.Name,"Mob Panel") or string.find(v.Name,"Utility Panel") then 
 v.Visible = false end end
 else for i,v in pairs(game:GetService("CoreGui"):GetDescendants()) do if string.find(v.Name,"Mob Panel") or string.find(v.Name,"Utility Panel") then v.Visible = true end end end end)
-local farmo = farmtab:CreateSection("Farming")
+local farmo = farmtab:CreateSection("Gelişme")
 local fielddropdown = farmo:CreateDropdown("Field", fieldstable, function(String) kocmoc.vars.field = String end) fielddropdown:SetOption(fieldstable[1])
 convertatslider = farmo:CreateSlider("Convert At", 0, 100, 100, false, function(Value) kocmoc.vars.convertat = Value end)
 local autofarmtoggle = farmo:CreateToggle("Autofarm [⚙]", nil, function(State) kocmoc.toggles.autofarm = State end) autofarmtoggle:CreateKeybind("U", function(Key) end)
-farmo:CreateToggle("Autodig", nil, function(State) kocmoc.toggles.autodig = State end)
-farmo:CreateDropdown("Autodig Mode", {"Normal","Collector Steal"}, function(Option)  kocmoc.vars.autodigmode = Option end)
+farmo:CreateToggle("Otomatik Kaz", nil, function(State) kocmoc.toggles.autodig = State end)
+farmo:CreateDropdown("Otomatik Kazma Modu", {"Normal","Collector Steal"}, function(Option)  kocmoc.vars.autodigmode = Option end)
 
 local contt = farmtab:CreateSection("Container Tools")
 contt:CreateToggle("Don't Convert Pollen", nil, function(State) kocmoc.toggles.disableconversion = State end)
